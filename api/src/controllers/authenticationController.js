@@ -31,7 +31,7 @@ const signInController = async(req, res) => {
                  }, AUTH_SECRET, {
                     expiresIn: AUTH_EXPIRES
                 });
-                res.status(201).json({
+                res.status(200).json({
                     user: user,
                     token: token
                 });

@@ -3,15 +3,15 @@ const jwt = require('jsonwebtoken');
 
 
 const validateToken = async(req, res, next) => {
-
-    if(!req.headers.authorization){
-        return res.status(401).json({ msg: 'Unauthorized access' });
+console.log(req.header("authorization"))
+    if(!req.header("authorization")){
+        return res.status(403).json({ msg: 'Unauthorized access' });
     }
 
-  const token = req.headers.authorization.split(" ")[1]
+  const token = req.header("authorization").split(" ")[1]
 
   if (!token){
-    return res.status(400).json({ 
+    return res.status(403).json({ 
         msg: 'user not logged in'
     })
   }
@@ -19,8 +19,8 @@ const validateToken = async(req, res, next) => {
     jwt.verify(token, AUTH_SECRET, (err, decoded) =>{
 
         if(err){
-            return res.status(500).json({
-        msg: 'An error occurred while validating the token'
+            return res.status(401).json({
+        msg: 'Invalid token'
         });
         } else {
             req.user = decoded
