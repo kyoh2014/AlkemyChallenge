@@ -1,9 +1,14 @@
-const { Operation, Category }= require('../models/index');
+const { Op } = require("sequelize");
+const { Operation, Category } = require('../models/index');
+
 
 const listController = async(req, res) => {
+
+    
     
     Operation.findAll({
         where: {
+            
             deletedAt:null,
         },
         include: {
@@ -19,6 +24,7 @@ const listController = async(req, res) => {
 };
 
 const createController = async(req, res) => {
+
     
     if (!(req.body.type.toLowerCase() === 'income' || req.body.type.toLowerCase() === 'egress')) {
         return res.status(400).json({msg: 'The type entered is wrong'})
@@ -33,18 +39,23 @@ const createController = async(req, res) => {
     }
 
 
-    let dateString = req.body.date.slice(0, -1) + '+00:00'
+    let dateString = req.body.date + ':00.000+00:00'
+    let idCategoryNumber = Number.parseInt(req.body.idCategory)
+
+
 
     Operation.create({
         concept: req.body.concept,
         amount: req.body.amount,
         date: Date.parse(dateString),
         type: req.body.type,
-        idUser: req.body.idUser,
-        idCategory: req.body.idCategory
+        idUser: req.user.id,
+        idCategory: idCategoryNumber
         })
     .then(Operation => {
+    
             res.json({ data: Operation });
+        
         })
     .catch(err => {
         console.log(err);
@@ -73,11 +84,28 @@ const searchByIdController = async(req, res) => {
 
 const updateController = async(req, res) => {
 
+    if (!(req.body.type.toLowerCase() === 'income' || req.body.type.toLowerCase() === 'egress')) {
+        return res.status(400).json({msg: 'The type entered is wrong'})
+    } 
+    if(Number.parseInt(req.body.amount) > 0 && req.body.type.toLowerCase() === 'egress') {
+
+        req.body.amount = Number.parseInt(req.body.amount) * (-1)
+    }
+    if(Number.parseInt(req.body.amount) > 0 && req.body.type.toLowerCase() === 'income') {
+
+        req.body.amount = Number.parseInt(req.body.amount)
+    }
+
+
+    let dateString = req.body.date + ':00.000+00:00'
+    let idCategoryNumber = Number.parseInt(req.body.idCategory)
+
     Operation.update({
         concept: req.body.concept,
         amount: req.body.amount,
-        date: req.body.date,
-        type: req.body.type
+        date: Date.parse(dateString),
+        idCategory: idCategoryNumber
+        
     }, {
         where: {
             id: req.params.id
@@ -85,6 +113,11 @@ const updateController = async(req, res) => {
     })
     .then(result => {
         res.json({ data: result });
+    })
+    .catch(err => {
+        res.status(400).send({
+            error:err
+        });
     })
 
 };
@@ -98,7 +131,7 @@ const deleteController = async(req, res) => {
         }
     })
     .then((result) => {
-        res.status(201).send({ data: result });
+        res.status(200).send({ data: result });
     })
     .catch(err => {
         res.status(400).send({
