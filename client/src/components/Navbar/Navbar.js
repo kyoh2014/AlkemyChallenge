@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Navbar({ token, setToken }) {
 

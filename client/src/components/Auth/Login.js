@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { LOGIN_URL } from "../../configs/api_url";
 
@@ -35,22 +34,7 @@ export default function Login({setToken}) {
     }
   } catch (e) {
     console.error(e)
-  }
-
-    // .then((res) => res.json())
-    //   .then((res) => {
-    //     localStorage.setItem("token", res.token)
-    //     setToken(res.token)
-    //     navigate("/home");
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     throw new Error()
-    //   })
-    //   .catch((err) => {
-    //     console.log("")
-    //   })
-  };
+  }};
 
   return (
     <div>
