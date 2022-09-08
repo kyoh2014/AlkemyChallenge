@@ -32,7 +32,6 @@ const signInController = async(req, res) => {
                     expiresIn: AUTH_EXPIRES
                 });
                 res.status(200).json({
-                    user: user,
                     token: token
                 });
 
