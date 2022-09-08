@@ -8,11 +8,12 @@ import Home from "./components/Home/Home";
 import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
 import UserHome from "./components/UserHome/UserHome";
-import Balance from "./components/UserHome/Balance";
-import TransactionList from "./components/Transactions/TransactionList";
 import Transaction from "./components/Transactions/Transaction";
+import TransactionList from "./components/Transactions/TransactionList";
 import TransactionEdit from "./components/Transactions/TransactionEdit";
-import axios from "axios";
+import TransactionDelete from "./components/Transactions/TransactionDelete";
+import RecentList from "./components/UserHome/RecentList";
+
 
 
 
@@ -43,23 +44,23 @@ function App() {
       <div className="App">
         <Navbar token={token} setToken={setToken}/>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home token={token}/>} />
 
           <Route path="/auth/register" element={<Register />} />
 
           <Route path="/auth" element={<Login setToken={setToken}/>} />
 
-          <Route path="/home" element={<UserHome />} />
+          <Route path="/home" element={<UserHome token={token}/>} />
 
-          <Route path="/balance" element={<Balance />} />
+          <Route path="/transaction" element={<Transaction token={token}/>} />
 
-          <Route path="/transaction" element={<Transaction />} />
+          <Route path="/transaction/list" element={<TransactionList token={token}/>} />
 
-          <Route path="/transaction/edit" element={<TransactionEdit />} />
+          <Route path="/transaction/edit/:id" element={<TransactionEdit token={token}/>} />
+          
+          <Route path="/transaction/delete/:id" element={<TransactionDelete token={token}/>} />
 
-          <Route path="/transaction/edit/:id" element={<TransactionEdit />} />
-
-          <Route path="/transaction/list" element={<TransactionList />} />
+          <Route path="/recentlist" element={<RecentList token={token}/>} />
         </Routes>
         {/* <Footer /> */}
       </div>
