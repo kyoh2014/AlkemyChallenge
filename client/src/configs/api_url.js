@@ -7,3 +7,4 @@ export const BALANCE_URL = BASE_URL + "api/balance";
 export const RECENTLIST_URL = BASE_URL + "api/balance/resume";
 export const ALLRECENTLIST_URL = BASE_URL + "api/balance/allresume";
 export const TRANSACTION_URL = BASE_URL + "api/operations";
+export const CATEGORIES_URL = BASE_URL + "api/categories"
