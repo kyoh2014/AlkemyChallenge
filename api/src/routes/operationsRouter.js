@@ -10,14 +10,14 @@ const { ownershipValidation } = require('../middlewares/ownershipValidation');
 
 const router = express.Router();
 
-router.get("/", listController);
+router.get("/", validateToken, listController);
 
-router.post("/", validateToken, createController);
+router.post("/", validateToken, ownershipValidation, createController);
 
-router.get("/:id", searchByIdController)
+router.get("/:id", validateToken, searchByIdController)
 
 router.put("/:id", validateToken, ownershipValidation, updateController);
 
-router.delete("/:id", deleteController);
+router.delete("/:id", validateToken, ownershipValidation, deleteController);
 
 module.exports = router;

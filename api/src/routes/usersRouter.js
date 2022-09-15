@@ -3,21 +3,22 @@ const { listController,
     createController,
     searchByIdController, 
     updateController, 
-    deleteController } = require('../controllers/userController')
+    deleteController } = require('../controllers/userController');
+    const { validateToken } = require("../middlewares/authValidation");
 
 
 const router = express.Router();
 
 
-router.get("/", listController)
+router.get("/", validateToken, listController)
 
-router.post("/", createController)
+router.post("/", validateToken, createController)
 
-router.get("/:id", searchByIdController)
+router.get("/:id", validateToken, searchByIdController)
 
-router.patch("/:id", updateController)
+router.patch("/:id", validateToken, updateController)
 
-router.delete("/:id", deleteController)
+router.delete("/:id", validateToken, deleteController)
     
 
 
