@@ -12,6 +12,11 @@ const listController =  async(req, res) => {
     .then(categories => {
         res.json({ data: categories });
     })
+    .catch(err => {
+        res.status(500).json({
+        msg: "An error occurred with the user's categories"  
+        })
+    });
 };
 
 const createController = async(req, res) => {
@@ -33,6 +38,7 @@ const createController = async(req, res) => {
         msg: 'An error occurred when creating an category'    
         })
     })
+    
 
 }
 
@@ -46,6 +52,11 @@ const searchByIdController = async(req, res) => {
     .then(category => {
         res.json({ data: category });
     })
+    .catch(err => {
+        res.status(500).json({
+        msg: "An error occurred when searching for a user category"  
+        })
+    });
 };
 
 const updateController = async(req, res) => {
@@ -63,7 +74,11 @@ const updateController = async(req, res) => {
     .then(result => {
         res.json({ data: result });
     })
-
+    .catch(err => {
+        res.status(500).json({
+        msg: "An error occurred while updating a user category"  
+        })
+    });
 };
 
 const deleteController = async(req, res) => {
@@ -79,8 +94,8 @@ const deleteController = async(req, res) => {
         res.status(201).send({ data: result });
     })
     .catch(err => {
-        res.status(400).send({
-            error:err
+        res.status(500).json({
+            msg: "An error occurred while deleting a category from the user"
         });
     })
 };

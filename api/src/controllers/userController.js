@@ -24,6 +24,11 @@ const listController = async(req, res) => {
     .then(users => {
         res.json({ data: users });
     })
+    .catch(err => {
+        res.status(400).json({
+            msg: "A user error occurred"
+        });
+    })
 
 };
 
@@ -87,6 +92,12 @@ const searchByIdController = async(req, res) => {
     .then(user => {
         res.json({ data: user });
     })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+        msg: 'An error occurred while searching for a user'    
+        })
+    });
 };
 
 const updateController = async(req, res) => {

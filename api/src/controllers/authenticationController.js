@@ -45,7 +45,6 @@ const signInController = async(req, res) => {
         
     })
     .catch(err => {
-        console.log(err);
         res.status(500).json({
         msg: 'An error occurred when login as user'    
         })
@@ -87,7 +86,6 @@ const signUpController = async(req, res) => {
             });
         })
     .catch(err => {
-        console.log(err);
         res.status(500).json({
         msg: 'An error occurred while registering the user'    
         })

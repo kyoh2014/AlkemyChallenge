@@ -15,6 +15,11 @@ const balanceController = async (req, res) => {
     } else {
         res.json({ data: totalAmount });
     }
+})
+.catch(err => {
+  res.status(500).json({
+  msg: "An error occurred with the user's balance"    
+  })
 });
 };
 
@@ -35,6 +40,11 @@ const resumeController = async (req, res) => {
     limit: OPERATIONS_IN_RESUME,
   }).then((amount) => {
     res.json({ data: amount });
+  })
+  .catch(err => {
+    res.status(500).json({
+    msg: "An error occurred with the summary of user operations"    
+    })
   });
 };
 
@@ -81,6 +91,11 @@ const allResumeController = async (req, res) => {
 
   }).then((allamount) => {
     res.json({ data: allamount });
+  })
+  .catch(err => {
+    res.status(500).json({
+    msg: "An error occurred with the user filter"    
+    })
   });
 };
 

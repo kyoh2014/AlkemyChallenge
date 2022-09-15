@@ -21,6 +21,11 @@ const listController = async(req, res) => {
     .then(operations => {
         res.json({ data: operations });
     })
+    .catch(err => {
+        res.status(500).json({
+        msg: "An error occurred in user operations"  
+        })
+    });
 };
 
 const createController = async(req, res) => {
@@ -80,6 +85,11 @@ const searchByIdController = async(req, res) => {
     .then(operation => {
         res.json({ data: operation });
     })
+    .catch(err => {
+        res.status(500).json({
+        msg: "An error occurred while searching for a user operation"  
+        })
+    });
 };
 
 const updateController = async(req, res) => {
@@ -115,8 +125,8 @@ const updateController = async(req, res) => {
         res.json({ data: result });
     })
     .catch(err => {
-        res.status(400).send({
-            error:err
+        res.status(500).json({
+            msg: "An error occurred while updating a user operation"
         });
     })
 
@@ -134,8 +144,8 @@ const deleteController = async(req, res) => {
         res.status(200).send({ data: result });
     })
     .catch(err => {
-        res.status(400).send({
-            error:err
+        res.status(400).json({
+            msg: "An error occurred while deleting a user operation"
         });
     })
 };
