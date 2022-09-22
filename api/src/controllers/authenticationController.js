@@ -54,7 +54,7 @@ const signInController = async(req, res) => {
 
 const signUpController = async(req, res) => {
 
-    const regex = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@$!%*?&]{8,15}$/)
+    const regex = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\d)[A-Za-z0-9\d$@$!%*?&]{8,15}$/)
 
     if (!regex.test(req.body.password)){
         return res.status(400).json({

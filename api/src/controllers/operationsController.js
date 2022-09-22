@@ -29,7 +29,7 @@ const listController = async(req, res) => {
 };
 
 const createController = async(req, res) => {
-
+console.log(req.body)
     
     if (!(req.body.type.toLowerCase() === 'income' || req.body.type.toLowerCase() === 'egress')) {
         return res.status(400).json({msg: 'The type entered is wrong'})
