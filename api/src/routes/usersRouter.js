@@ -5,6 +5,7 @@ const { listController,
     updateController, 
     deleteController } = require('../controllers/userController');
     const { validateToken } = require("../middlewares/authValidation");
+    const { ownershipValidation } = require('../middlewares/ownershipValidation');
 
 
 const router = express.Router();
@@ -14,11 +15,11 @@ router.get("/", validateToken, listController)
 
 router.post("/", validateToken, createController)
 
-router.get("/:id", validateToken, searchByIdController)
+router.get("/:id", validateToken, ownershipValidation, searchByIdController)
 
-router.patch("/:id", validateToken, updateController)
+router.patch("/:id", validateToken, ownershipValidation, updateController)
 
-router.delete("/:id", validateToken, deleteController)
+router.delete("/:id", validateToken, ownershipValidation, deleteController)
     
 
 

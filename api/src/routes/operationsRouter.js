@@ -12,9 +12,9 @@ const router = express.Router();
 
 router.get("/", validateToken, listController);
 
-router.post("/", validateToken, ownershipValidation, createController);
+router.post("/", validateToken, createController);
 
-router.get("/:id", validateToken, searchByIdController)
+router.get("/:id", validateToken, ownershipValidation, searchByIdController)
 
 router.put("/:id", validateToken, ownershipValidation, updateController);
 
