@@ -1,7 +1,8 @@
-const { Operation } = require("../models/index");
+const { Operation, User } = require("../models/index");
 
 const models = {
-  operations: Operation,
+  operations: [Operation, "idUser"],
+  users: [User, "id"]
 };
 
 const ownershipValidation = async (req, res, next) => {
@@ -9,9 +10,9 @@ const ownershipValidation = async (req, res, next) => {
   const model = models[url[2]];
   
 
-  const data = await model.findByPk(req.params.id);
+  const data = await model[0].findByPk(req.params.id);
 
-  if (req.user.id === data.idUser) {
+  if (req.user.id === data[model[1]]) {
     return next();
   } else {
     return res.status(403).json({
