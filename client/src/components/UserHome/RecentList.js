@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import { RECENTLIST_URL } from "../../configs/api_url";
 import OperationItem from "../Utils/OperationItem";
 
-export default function RecentList({}) {
+export default function RecentList({token}) {
   const [recentList, setRecentList] = useState(undefined);
-  const [token, setToken] = useState(localStorage.getItem("token"));
 
   useEffect(() => {
     const fetchBalance = async () => {
@@ -20,9 +19,7 @@ export default function RecentList({}) {
 
         if (response.status === 200) {
           setRecentList(data.data);
-        } else {
-          setToken(null);
-        }
+        } 
       } catch (e) {
         console.error(e);
       }

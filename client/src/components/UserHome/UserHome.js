@@ -1,9 +1,9 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect }from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Balance from "./Balance";
 import RecentList from "./RecentList";
 
-export default function UserHome(token) {
+export default function UserHome({token}) {
 
   return (
     <div>
@@ -11,17 +11,17 @@ export default function UserHome(token) {
       <div className="">
         <Balance token={token} />
         <br />
-        <RecentList />
+        <RecentList token={token}/>
         <br />
         <p>
-          <NavLink to="/transaction">
+          <Link to="/transaction">
           New Transaction
-          </NavLink>
+          </Link>
         </p>
         <p>
-          <NavLink to="/transaction/list">
+          <Link to="/transaction/list">
             List Transaction
-          </NavLink>
+          </Link>
         </p>
       </div>
     </div>

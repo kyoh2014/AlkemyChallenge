@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { BALANCE_URL } from "../../configs/api_url";
 
-export default function Balance({}) {
+export default function Balance({token}) {
   const [balance, setBalance] = useState(undefined);
-  const [token, setToken] = useState(localStorage.getItem("token"));
 
   useEffect(() => {
     const fetchBalance = async () => {
@@ -19,15 +18,13 @@ export default function Balance({}) {
 
         if (response.status === 200) {
           setBalance(data.data[0].total);
-        } else {
-            setToken(null);
-        }
+        } 
       } catch (e) {
         console.error(e);
       }
     }
     fetchBalance()
-  }, []);
+  }, [token]);
 
   return (
     <div>
