@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 export default function Home({token}) {
@@ -7,7 +7,6 @@ export default function Home({token}) {
   const navigate = useNavigate()
 
   useEffect(()=>{
-    console.log(token)
     if(token){
       navigate("/home")
     }
@@ -18,9 +17,9 @@ export default function Home({token}) {
       <h1>MyBudget</h1>
       <p>
         Keep track of your expenses and your income. Get Started!
-        <NavLink to="/auth/register">
+        <Link to="/auth/register">
             Start
-        </NavLink>
+        </Link>
       </p>
     </div>
   )
