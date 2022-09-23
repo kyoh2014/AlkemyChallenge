@@ -1,7 +1,9 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./App.css"
+import { BrowserRouter as Router, Route, Routes, redirecTo } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { ISAUTHENTICATE_URL } from "./configs/api_url"
 
+import ProtectedRoute from "./components/Utils/ProtectedRoute"
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer"
 import Home from "./components/Home/Home";
@@ -12,7 +14,6 @@ import Transaction from "./components/Transactions/Transaction";
 import TransactionList from "./components/Transactions/TransactionList";
 import TransactionEdit from "./components/Transactions/TransactionEdit";
 import TransactionDelete from "./components/Transactions/TransactionDelete";
-import RecentList from "./components/UserHome/RecentList";
 
 
 
@@ -37,7 +38,7 @@ function App() {
     console.error(e)
   }}
   fetchData();
-}, []);
+}, [token]);
 
   return (
     <Router>
@@ -50,19 +51,17 @@ function App() {
 
           <Route path="/auth" element={<Login setToken={setToken}/>} />
 
-          <Route path="/home" element={<UserHome token={token}/>} />
+          <Route path="/home" element={<ProtectedRoute token={token}><UserHome token={token}/></ProtectedRoute>} />
 
-          <Route path="/transaction" element={<Transaction token={token}/>} />
+          <Route path="/transaction" element={<ProtectedRoute token={token}><Transaction token={token}/></ProtectedRoute>} />
 
-          <Route path="/transaction/list" element={<TransactionList token={token}/>} />
+          <Route path="/transaction/list" element={<ProtectedRoute token={token}><TransactionList token={token}/></ProtectedRoute>} />
 
-          <Route path="/transaction/edit/:id" element={<TransactionEdit token={token}/>} />
+          <Route path="/transaction/edit/:id" element={<ProtectedRoute token={token}><TransactionEdit token={token}/></ProtectedRoute>} />
           
-          <Route path="/transaction/delete/:id" element={<TransactionDelete token={token}/>} />
-
-          <Route path="/recentlist" element={<RecentList token={token}/>} />
+          <Route path="/transaction/delete/:id" element={<ProtectedRoute token={token}><TransactionDelete token={token}/></ProtectedRoute>} />
         </Routes>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </Router>
   );
