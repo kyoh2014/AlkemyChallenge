@@ -42,8 +42,6 @@ export default function RecentList({ token }) {
         }
       );
       const data = await response.json();
-      console.log(type.type)
-      console.log(idCategory)
 
       if (response.status === 200) {
         setTransactionList(data.data);

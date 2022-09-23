@@ -1,43 +1,57 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { TRANSACTION_URL } from "../../configs/api_url";
+import { TRANSACTION_URL,
+  CATEGORIES_URL } from "../../configs/api_url";
 
 
 export default function Transaction({token}) {
 
   const {id} = useParams()
   const navigate = useNavigate();
+  const [idListCategory, setIdListCategory] = useState(undefined);
+  const [listCategory, setListCategory] = useState([])
   const [form, setForm] = useState({
     concept: "",
     amount: 0,
     date: "",
     type: "",
     idCategory: "",
-    Categorry:"",
   });
 
 
   useEffect(() => {
     const fetchData = async () => {
         try {
-          const response = await fetch(TRANSACTION_URL + "/" + id, {
+          const transactionResponse = await fetch(TRANSACTION_URL + "/" + id, {
             method: "get",
             headers: {
               "Content-Type": "application/json",
               "authorization": `bearer ${token}`,
             },
           });
-          const data = await response.json();
+          const transactionData = await transactionResponse.json();
+
+          const categoryResponse = await fetch(CATEGORIES_URL, {
+            method: "get",
+            headers: {
+              "Content-Type": "application/json",
+              "authorization": `bearer ${token}`,
+            },
+          });
+          const categoryData = await categoryResponse.json();
   
-          if (response.status === 200) {
-            setForm(data.data);
+          if (transactionResponse.status === 200) {
+            setForm(transactionData.data)
+          }
+          if (categoryResponse.status === 200) {
+            setListCategory(categoryData.data)
           } 
         } catch (e) {
           console.error(e);
         }
       };
       fetchData();
-    }, [token]);
+    }, [token, id]);
 
   const handleChange = (e) => {
     setForm({
@@ -46,6 +60,17 @@ export default function Transaction({token}) {
     })
     };
   
+
+  const handleChangeCategory = (e) => {
+      setIdListCategory({
+        ...idListCategory,
+        [e.target.name]: e.target.value,
+      })
+      setForm({
+        ...form,
+        [e.target.name]: e.target.value,
+        });
+    };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -96,17 +121,12 @@ export default function Transaction({token}) {
             type="text"
             id="idCategory"
             name="idCategory"
-            onChange={handleChange}
+            onChange={handleChangeCategory}
             >
             <option value="">Select Category Of Transaction</option>
-            <option value="4">Shopping</option>
-            <option value="5">Entertainment</option>
-            <option value="6">Restaurants and Bars</option>
-            <option value="7">Health and Sport</option>
-            <option value="8">Services</option>
-            <option value="9">Supermarket</option>
-            <option value="10">Transportation</option>
-            <option value="11">Holidays</option>
+            {listCategory?.map((category) => (
+        <option value={category.id} key={category.id}>{category.name}</option>
+      ))}
           </select>
         </div>
         <div className="">

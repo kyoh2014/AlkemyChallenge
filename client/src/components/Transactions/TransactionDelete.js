@@ -35,7 +35,7 @@ export default function Transaction({token}) {
         }
       };
       fetchData();
-    }, [token]);
+    }, [token, id]);
 
 
   const handleSubmit = async (e) => {

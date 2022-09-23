@@ -1,17 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { TRANSACTION_URL } from "../../configs/api_url";
+import { TRANSACTION_URL, CATEGORIES_URL } from "../../configs/api_url";
 
 export default function Transaction({token}) {
   const navigate = useNavigate();
+  const [idListCategory, setIdListCategory] = useState(undefined);
+  const [listCategory, setListCategory] = useState([])
   const [form, setForm] = useState({
     concept: "",
-    amount: 0,
+    amount: "",
     date: "",
     type: "",
-    idUser: "",
     idCategory: "",
   });
+
+  useEffect(() => {
+    const fetchList = async () => {
+        try {
+          const response = await fetch(CATEGORIES_URL, {
+            method: "get",
+          });
+          const data = await response.json();
+  
+          if (response.status === 200) {
+            setListCategory(data.data);
+          } 
+        } catch (e) {
+          console.error(e);
+        }
+      };
+      fetchList();
+    }, []);
 
   const handleChange = (e) => {
     setForm({
@@ -20,7 +39,16 @@ export default function Transaction({token}) {
     });
   };
 
-  
+  const handleChangeCategory = (e) => {
+    setIdListCategory({
+      ...idListCategory,
+      [e.target.name]: e.target.value,
+    })
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+      })
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -68,17 +96,12 @@ export default function Transaction({token}) {
             type="text"
             id="idCategory"
             name="idCategory"
-            onChange={handleChange}
+            onChange={handleChangeCategory}
             >
             <option value="">Select Category Of Transaction</option>
-            <option value="4">Shopping</option>
-            <option value="5">Entertainment</option>
-            <option value="6">Restaurants and Bars</option>
-            <option value="7">Health and Sport</option>
-            <option value="8">Services</option>
-            <option value="9">Supermarket</option>
-            <option value="10">Transportation</option>
-            <option value="11">Holidays</option>
+            {listCategory?.map((category) => (
+        <option value={category.id} key={category.id}>{category.name}</option>
+      ))}
           </select>
         </div>
         <div className="">
