@@ -1,0 +1,70 @@
+.transactionlist_main{
+    display: block;
+    text-align: center;
+    align-items: center;
+}
+
+.transactionlist_title{
+    color: aliceblue;
+    margin: 2em;
+    background-color: rgba(36, 36, 53, 0.600);
+    box-sizing: border-box;
+    padding: 0.5em 1em 0.5em 1em;
+    border-radius: 1.5em;
+    box-shadow: 0.1em 0.1em 0.1em 0.1em #000;
+}
+
+.transactionlist_select{
+    margin:1em 0em ;
+    background-color: rgba(36, 36, 53, 0.600);
+    color: aliceblue;
+    box-sizing: border-box;
+    border-radius: 1em;
+    box-shadow: 0em 0.1em 0.4em 0.1em rgba(5, 5, 5, 0.397);
+    padding: 1em 1.5em;
+}
+
+.transactionlist_type{
+    margin: 0.5em 0em;
+    text-align: start;
+}
+.transactionlist_category{
+    margin: 0em 0em 1em 0em;
+    text-align: start;
+} 
+
+.transactionlist_container{
+    color: aliceblue;
+    background-color: rgba(36, 36, 53, 0.600);
+    box-sizing: border-box;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 2em;
+    box-shadow: 0.1em 0.1em 0.1em 0.1em #000;
+}
+.transactionlist_container_empty{
+    box-sizing: border-box;
+    border-style: dashed;
+    box-shadow: 0em 0em 0em 0.2em rgba(0, 0, 0, 0.247);
+    border-radius: 1em;
+    border-color: rgba(218, 218, 233, 0.6);
+    margin: 0.5em 1em;
+}
+
+@media (min-width: 800px){
+    .transactionlist_main{
+        display: flex;  
+        flex-direction: column; 
+        margin: 0em 20%;
+    }
+    
+}
+
+@media (min-width:325px){
+    .transactionlist_title{
+        display: inline-block;
+    }
+    .transactionlist_select{
+        display: inline-block;
+    }
+}
