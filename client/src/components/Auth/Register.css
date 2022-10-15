@@ -1,0 +1,53 @@
+.register_main{
+    color: #fff;
+    text-align: start;
+    padding: 0em 4em 1em 4em;
+}
+
+.register_title{
+    padding: 0em;
+    margin: 0em;
+    font-size: 1.5em;
+    display: flex;
+    position: relative;
+    left: 25%;
+}
+
+.register_name{
+    box-sizing: border-box;
+    border-radius: 1em;
+    box-shadow: 0em 0.1em 0.4em 0.1em rgba(5, 5, 5, 0.397);
+    padding: 0.3em 1em;
+}
+.register_lastname{
+    margin: 1em 0em ;
+    box-sizing: border-box;
+    border-radius: 1em;
+    box-shadow: 0em 0.1em 0.4em 0.1em rgba(5, 5, 5, 0.397);
+    padding: 0.3em 1em;
+}
+.register_username{
+    margin: 1em 0em ;
+    box-sizing: border-box;
+    border-radius: 1em;
+    box-shadow: 0em 0.1em 0.4em 0.1em rgba(5, 5, 5, 0.397);
+    padding: 0.3em 1em;
+}
+.register_email{
+    margin: 1em 0em ;
+    box-sizing: border-box;
+    border-radius: 1em;
+    box-shadow: 0em 0.1em 0.4em 0.1em rgba(5, 5, 5, 0.397);
+    padding: 0.3em 1em;
+}
+.register_password{
+    margin: 1em 0em ;
+    box-sizing: border-box;
+    border-radius: 1em;
+    box-shadow: 0em 0.1em 0.4em 0.1em rgba(5, 5, 5, 0.397);
+    padding: 0.3em 1em;
+}
+.register_alert{
+    font-size: 0.9em;
+    text-align: center;
+}
