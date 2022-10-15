@@ -1,3 +1,4 @@
+import "./Balance.css"
 import React, { useEffect, useState } from "react";
 import { BALANCE_URL } from "../../configs/api_url";
 
@@ -11,11 +12,11 @@ export default function Balance({token}) {
             method: "get",
             headers: {
               'Content-Type': 'application/json', 
-              'authorization': `bearer ${token}`
+              'authorization': `bearer ${token}`,
             }
         });
         const data = await response.json();
-
+        
         if (response.status === 200) {
           setBalance(data.data[0].total);
         } 
@@ -28,8 +29,8 @@ export default function Balance({token}) {
 
   return (
     <div>
-      <h1>Your current balance is{" "}
-      <span className="">${balance}</span>
+      <h1 className="current_balance">Your current balance is{" "}
+      <span className="balance_amount">${balance}</span>
       </h1>
     </div>
   );
