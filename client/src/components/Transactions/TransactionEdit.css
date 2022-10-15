@@ -1,0 +1,18 @@
+.transactionedit_type{
+    margin:1em 0em ;
+    box-sizing: border-box;
+    border-radius: 1em;
+    box-shadow: 0em 0.1em 0.4em 0.1em rgba(5, 5, 5, 0.397);
+    padding: 0.3em 1em;
+}
+.transactionedit_type span{
+    font-size: 1em;
+    background: rgb(36, 36, 53);
+    padding: 0em 1em 0em 1em;
+    margin: 0em 0em 0em 0.5em ;
+    color: #fff;
+    border-color: rgb(36, 36, 53);
+    border: none;
+    border-radius: 0.4em;
+    box-shadow: 0.1em 0.1em 0.1em 0.1em #000;
+}
