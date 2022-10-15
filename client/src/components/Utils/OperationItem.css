@@ -1,0 +1,81 @@
+.operation_main{
+    color: aliceblue;
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(0, 0, 10, 0.281);
+    box-sizing: border-box;
+    margin: 2em;
+    padding: 0.2em 1em;
+    border-radius: 1.2em;
+    box-shadow: 0em 0.1em 0.4em 0.1em #000;
+}
+.operation_buttons{
+    display: flex;
+    justify-content:space-around;
+    flex-direction: column;
+    margin: 0.3em 1em 0.3em 3em;
+}
+
+.operation_idtransaction{
+    display: none;
+}
+.operation_amount{
+    text-align: center;
+    margin: 1em 1em;
+}
+.operation_concept{
+    margin: 1em 1em;
+    text-align: center;
+}
+.operation_date{
+    margin: 1em 1em;
+    text-align: center;
+}
+.operation_type{
+    margin: 1em 1em;
+    text-align: center;
+}
+.operation_category{
+    margin: 1em 1em;
+    text-align: center;
+}
+
+.operation_button{
+    box-sizing: border-box;
+    border-radius: 0.5em;
+    background-color: rgb(28, 28, 44);
+    color: aliceblue;
+    cursor: pointer;
+    font-size: 0.9em;
+    text-shadow: 0em 0em 0.2em rgb(1, 5, 255);
+    box-sizing: border-box;
+    padding: 0.1em 0.8em;
+    margin: 0.3em 0em ;
+    border-radius: 2em;
+    box-shadow: 0.1em 0.1em 0.1em #000;
+    border-color:rgb(46, 46, 70);
+    transition: .3s ease all;
+}
+.operation_button:hover{
+    color: rgba(88, 82, 82, 0.671)
+}
+
+.operation_button:active{
+    background-color: rgb(22, 22, 32);
+    color: rgb(170, 159, 255);
+    box-shadow: 0.1em 0.1em 0.1em #000;
+    text-shadow: 0em 0em 0.2em rgb(0, 0, 0);
+}
+
+
+@media (max-width: 800px){
+    .operation_main{
+        flex-direction: column;
+    }
+    .operation_buttons{
+        display: block;
+    }
+    .operation_button{
+        margin: 1em 0.5em;
+    }
+}
