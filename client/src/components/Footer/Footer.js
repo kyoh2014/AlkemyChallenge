@@ -1,3 +1,4 @@
+import "./Footer.css"
 import React from "react";
 
 const url = {
@@ -11,12 +12,12 @@ export default function Footer() {
   };
 
   return (
-    <div>
-      <button onClick={handleClick}>
-        <img name="LinkedIn" src="/icons/LinkedinIcon.png" alt="image"/>
+    <div className="footer_main">
+      <button className="linkedin_button" name="LinkedIn" onClick={handleClick}>
+        <img className="linkedin_icon" name="LinkedIn" src="/icons/LinkedinIcon.png" alt="image"/>
       </button>
-      <button onClick={handleClick}>
-        <img name="GitHub" src="/icons/GitHubIcon.png" alt="image"/>
+      <button className="github_button" name="GitHub" onClick={handleClick}>
+        <img className="github_icon" name="GitHub" src="/icons/GitHubIcon.png" alt="image"/>
       </button>
     </div>
   );
