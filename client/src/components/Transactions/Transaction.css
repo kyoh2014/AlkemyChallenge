@@ -1,0 +1,49 @@
+.transaction_main{
+    text-align: start;
+    padding: 0.2em 4em 1em 4em;
+}
+
+.transaction_title{
+    display: flex;
+    position: relative;
+    left: 5%;
+}
+
+.transaction_concept{
+    margin:1em 0em ;
+    box-sizing: border-box;
+    border-radius: 1em;
+    box-shadow: 0em 0.1em 0.4em 0.1em rgba(5, 5, 5, 0.397);
+    padding: 0.3em 1em;
+}
+.transaction_category{
+    margin:1em 0em ;
+    box-sizing: border-box;
+    border-radius: 1em;
+    box-shadow: 0em 0.1em 0.4em 0.1em rgba(5, 5, 5, 0.397);
+    padding: 0.3em 1em;
+}
+.transaction_amount{
+    margin:1em 0em ;
+    box-sizing: border-box;
+    border-radius: 1em;
+    box-shadow: 0em 0.1em 0.4em 0.1em rgba(5, 5, 5, 0.397);
+    padding: 0.3em 1em;
+}
+.transaction_date{
+    margin:1em 0em ;
+    box-sizing: border-box;
+    border-radius: 1em;
+    box-shadow: 0em 0.1em 0.4em 0.1em rgba(5, 5, 5, 0.397);
+    padding: 0.3em 1em;
+}
+.transaction_type{
+    margin:1em 0em ;
+    box-sizing: border-box;
+    border-radius: 1em;
+    box-shadow: 0em 0.1em 0.4em 0.1em rgba(5, 5, 5, 0.397);
+    padding: 0.3em 1em;
+}
+
+
+
