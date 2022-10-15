@@ -1,45 +1,50 @@
+import "./TransactionDelete.css"
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { TRANSACTION_URL } from "../../configs/api_url";
+import dateReformat from "../Utils/DateReformat"
 
-
-export default function Transaction({token}) {
-  const {id} = useParams()
-  const navigate = useNavigate();
+export default function Transaction({ token, elementId, setButtonDelete}) {
+  let { id } = useParams();
   const [form, setForm] = useState({
     concept: "",
     amount: 0,
     date: "",
     type: "",
     idCategory: "",
-    Category:"",
+    Category: "",
   });
 
   useEffect(() => {
     const fetchData = async () => {
-        try {
-          const response = await fetch(TRANSACTION_URL + "/" + id, {
-            method: "get",
-            headers: {
-              "Content-Type": "application/json",
-              "authorization": `bearer ${token}`,
-            },
-          });
-          const data = await response.json();
-  
-          if (response.status === 200) {
-            setForm(data.data);
-          } 
-        } catch (e) {
-          console.error(e);
-        }
-      };
-      fetchData();
-    }, [token, id]);
+      if (elementId) {
+        id = elementId;
+      }
 
+      try {
+        const response = await fetch(TRANSACTION_URL + "/" + id, {
+          method: "get",
+          headers: {
+            "Content-Type": "application/json",
+            "authorization": `bearer ${token}`,
+          },
+        });
+        const data = await response.json();
+
+        if (response.status === 200) {
+          setForm(data.data);
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    fetchData();
+  }, [token, id]);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    if (elementId) {
+      id = elementId;
+    }
     try {
       const response = await fetch(TRANSACTION_URL + "/" + id, {
         method: "delete",
@@ -47,10 +52,10 @@ export default function Transaction({token}) {
           "Content-Type": "application/json",
           "authorization": `bearer ${token}`,
         },
-        body: JSON.stringify(form)
+        body: JSON.stringify(form),
       });
       if (response.status === 200) {
-        navigate("/home");
+        setButtonDelete(false);
       }
     } catch (e) {
       console.error(e);
@@ -58,21 +63,18 @@ export default function Transaction({token}) {
   };
 
   return (
-    <div>
-      <h1>are you sure?
-        <p> Amount:{form.amount} </p>
-        <p> Concept:{form.concept} </p>
-        <p> Date:{form.date} </p>
-        <p> Type:{form.type} </p>
-        <p> Category:{form.Category.name} </p> 
-      </h1>
+    <div className="transactiondelete_main">
+      <div className="transactiondelete_form">
+        <p className="transactiondelete_title">Are you sure?</p>
+        <p className="transactiondelete_font"> Amount: {form.amount} </p>
+        <p className="transactiondelete_font"> Concept: {form.concept} </p>
+        <p className="transactiondelete_font"> Date: {dateReformat(form.date)} </p>
+        <p className="transactiondelete_font"> Type: {form.type} </p>
+        <p className="transactiondelete_font"> Category: {form.Category.name} </p>
+      </div>
       <form onSubmit={handleSubmit}>
-        <div className=""/>
-        <button
-          type="submit"
-        >
-          Delete
-        </button>
+        <div/>
+        <button className="transactiondelete_delete" type="submit">Delete</button>
       </form>
     </div>
   );

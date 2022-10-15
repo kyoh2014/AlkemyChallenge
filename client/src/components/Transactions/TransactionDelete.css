@@ -1,0 +1,42 @@
+.transactiondelete_font{
+    font-size: 0.5em;
+    text-align: start;
+    padding: 0.3em 1em;
+    margin: 1em 6em;
+    box-sizing: border-box;
+    border-radius: 1em;
+    box-shadow: 0em 0.1em 0.4em 0.1em rgba(5, 5, 5, 0.397);
+}
+
+.transactiondelete_title{
+    margin: 0em 0em 1em 0em;
+}
+
+.transactiondelete_delete{
+    margin: 1em 0em 0em 0em;
+    background-color: rgb(28, 28, 44);
+    color: aliceblue;
+    cursor: pointer;
+    font-size: 1em;
+    text-shadow: 0em 0em 0.2em rgb(1, 5, 255);
+    box-sizing: border-box;
+    padding: 0.2em 0.8em ;
+    border-radius: 2em;
+    box-shadow: 0.1em 0.1em 0.1em #000;
+    border-color:rgb(46, 46, 70);
+    transition: .3s ease all;
+}
+
+.transactiondelete_delete:hover{
+    color: rgba(88, 82, 82, 0.671)
+}
+.transactiondelete_delete:active{
+    background-color: rgb(22, 22, 32);
+    color: rgb(170, 159, 255);
+    box-shadow: 0.1em 0.1em 0.1em #000;
+    text-shadow: 0em 0em 0.2em rgb(0, 0, 0);
+}
+
+.transactiondelete_form{
+    font-size: 2em;
+}
