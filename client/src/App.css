@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Source+Sans+Pro:wght@600&display=swap');
+
+* {
+    font-family: 'Lora', serif;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 0em;
+    /* min-height: 92.3vh; */
+    min-height: 100vh;
+    /* position: relative; */
+    /* padding-bottom: 4.5em; */
+  }
+
+.overlay{
+    background: rgba(0, 0, 0, .3);
+    position: fixed;
+    padding: 0em 0em 0em 0em;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+.overlay_alert{
+    background: rgba(0, 0, 0, .3);
+    position: fixed;
+    /* padding: 0em 0em 0em 0em; */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+.popup{
+    font-size: 1em;
+    background: rgb(36, 36, 53);
+    box-shadow: 0em 0em 1em 0em rgba(0, 0, 0, .3);
+    border-radius: 2em;
+    padding: 1em 0em 2em 0em;
+    text-align: center;
+    width: 30em;
+}.popup_alert{
+    font-size: 1em;
+    background: rgb(36, 36, 53);
+    box-shadow: 0em 0em 1em 0em rgba(0, 0, 0, .3);
+    border-radius: 2em;
+    padding: 0.8em 1em 2em 1em;
+    text-align: center;
+    width: 20em;
+}
+.alert{
+    border-color: #000;
+    text-shadow: 0em 0em 0.5em rgb(0, 0, 0);
+    text-align: center;
+    margin: 1em 0em;
+    font-size: 0.9em;
+}
+.alert_description{
+    font-size: 1.5em;
+    padding: 1em;
+    margin: 0.5em 1em;
+    box-sizing: border-box;
+    box-shadow: 0em 0em 1em 0em rgba(0, 0, 0, .3);
+    border-radius: 1em;
+
+}
+
+.button_close{
+    font-size: 1.2em;
+    display: flex;
+    position: relative;
+    left: 88%;
+    background-color: rgb(28, 28, 44);
+    color: aliceblue;
+    cursor: pointer;
+    text-shadow: 0em 0em 0.2em rgb(1, 5, 255);
+    box-sizing: border-box;
+    padding: 0.1em 0.6em ;
+    border-radius: 2em;
+    box-shadow: 0.1em 0.1em 0.1em #000;
+    border-color:rgb(46, 46, 70);
+    transition: .3s ease all;
+}
+.button_close:hover{
+    color: rgba(88, 82, 82, 0.671)
+}
+.button_close:active{
+    background-color: rgb(22, 22, 32);
+    color: rgb(170, 159, 255);
+    box-shadow: 0.1em 0.1em 0.1em #000;
+    text-shadow: 0em 0em 0.2em rgb(0, 0, 0);
+}
+
+.button{
+    background-color: rgb(28, 28, 44);
+    color: aliceblue;
+    cursor: pointer;
+    font-size: 1em;
+    text-shadow: 0em 0em 0.2em rgb(1, 5, 255);
+    box-sizing: border-box;
+    padding: 0.2em 0.8em ;
+    border-radius: 2em;
+    box-shadow: 0.1em 0.1em 0.1em #000;
+    border-color:rgb(46, 46, 70);
+    transition: .3s ease all;
+}
+.button:active{
+    background-color: rgb(22, 22, 32);
+    color: rgb(170, 159, 255);
+    box-shadow: 0.1em 0.1em 0.1em #000;
+    text-shadow: 0em 0em 0.2em rgb(0, 0, 0);
+}
+.button:hover{
+    color: rgba(88, 82, 82, 0.671);
+}
+
+h1{
+    margin: 1em 1em;
+}
+
+.button_submit{
+    display: flex;
+    position: relative;
+    left: 37.5%;
+    margin: 2em 0em 0em 0em;
+    background-color: rgb(28, 28, 44);
+    color: aliceblue;
+    cursor: pointer;
+    font-size: 1em;
+    text-shadow: 0em 0em 0.2em rgb(1, 5, 255);
+    box-sizing: border-box;
+    padding: 0.2em 0.8em ;
+    border-radius: 2em;
+    box-shadow: 0.1em 0.1em 0.1em #000;
+    border-color:rgb(46, 46, 70);
+    transition: .3s ease all;
+}
+.button_submit:hover{
+    color: rgba(88, 82, 82, 0.671)
+}
+.button_submit:active{
+    background-color: rgb(22, 22, 32);
+    color: rgb(170, 159, 255);
+    box-shadow: 0.1em 0.1em 0.1em #000;
+    text-shadow: 0em 0em 0.2em rgb(0, 0, 0);
+}
+
+input{
+    background: rgb(36, 36, 53);
+    padding: 0em 1em;
+    margin: 0em 0em 0.2em 0.5em ;
+    color: #fff;
+    border-color: rgb(36, 36, 53);
+    border: none;
+    border-radius: 0.4em;
+    box-shadow: 0.1em 0.1em 0.1em 0.1em #000;
+}
+
+select{
+    background: rgb(36, 36, 53);
+    padding: 0em 0.2em;
+    margin: 0em 0em 0.2em 0.5em ;
+    color: #fff;
+    border-color: rgba(5, 5, 5, 0.397);
+    border: none;
+    border-radius: 0.4em;
+    box-shadow: 0.1em 0.1em 0.1em 0.1em #000;
+}
