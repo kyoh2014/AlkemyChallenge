@@ -1,14 +1,16 @@
 const { Category }= require("../models/index")
 
+// Category listing controller for user operations
 const listController =  async(req, res) => {
     
+    // Get all categories
     Category.findAll({
         where: {
             deletedAt:null
         },
         attributes: ['id', 'name']
-      }
-    )
+    })
+    // Return list of all categories
     .then(categories => {
         res.json({ data: categories });
     })
@@ -19,36 +21,36 @@ const listController =  async(req, res) => {
     });
 };
 
+// Category creation controller for user operations
 const createController = async(req, res) => {
 
+    // Creation of the category
     Category.create({
-
         name: req.body.name,
-        description: req.body.description,
-        image: req.body.image,
-        miniature: req.body.miniature
-
-        })
+    })
+    // Return of the created category
     .then(category => {
             res.json({ data: category });
-        })
+    })
     .catch(err => {
         console.log(err);
         res.status(500).json({
         msg: 'An error occurred when creating an category'    
         })
     })
-    
-
 }
 
+// Category finder handler by id
 const searchByIdController = async(req, res) => {
+
+    // Obtaining the category through the id
     Category.findByPk(req.params.id, {
         where: {
            deletedAt: null
         },
         attributes: ['deletedAt', 'name']
       })
+    // Return of the obtained category
     .then(category => {
         res.json({ data: category });
     })
@@ -59,8 +61,10 @@ const searchByIdController = async(req, res) => {
     });
 };
 
+// Category update  controller
 const updateController = async(req, res) => {
 
+    // Obtaining the category to update
     Category.update({
         name: req.body.name,
         description: req.body.description,
@@ -71,6 +75,7 @@ const updateController = async(req, res) => {
             id: req.params.id
         }
     })
+    // Return of updated category
     .then(result => {
         res.json({ data: result });
     })
@@ -81,15 +86,19 @@ const updateController = async(req, res) => {
     });
 };
 
+// Category delete controller
 const deleteController = async(req, res) => {
 
+    // Obtaining the category to update
     Category.update({
+        // The "null" is changed by the date on which the deletion was carried out
         deletedAt: new Date()
-}, {
+    }, {
         where: {
             id: req.params.id
         }
     })
+    // Return the modified category, marked as deleted
     .then((result) => {
         res.status(201).send({ data: result });
     })
@@ -99,6 +108,5 @@ const deleteController = async(req, res) => {
         });
     })
 };
-
 
 module.exports = { listController, createController , searchByIdController, updateController, deleteController}

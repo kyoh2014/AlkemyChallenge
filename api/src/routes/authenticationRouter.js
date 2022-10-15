@@ -6,14 +6,13 @@ const { validateToken } = require("../middlewares/authValidation")
 
 const router = express.Router();
 
-// Login
+// User Login Router
 router.post('/signIn', signInController)
 
-//Register
+// User Register Router
 router.post('/signUp', signUpController)
 
-//User Authentication
+// User Authentication Router
 router.get('/', validateToken, authController)
-
 
 module.exports = router;

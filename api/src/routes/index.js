@@ -7,12 +7,19 @@ const balance = require("./balanceRouter");
 
 const router = express.Router();
 
-
+// User Router
 router.use("/users", users);
-router.use("/operations", operations);
-router.use("/categories", categories);
-router.use("/authentication", authentication);
-router.use("/balance", balance);
 
+// Operation Router
+router.use("/operations", operations);
+
+// Categories Router
+router.use("/categories", categories);
+
+// Auth Router
+router.use("/authentication", authentication);
+
+// Balance Router
+router.use("/balance", balance);
 
 module.exports = router;
