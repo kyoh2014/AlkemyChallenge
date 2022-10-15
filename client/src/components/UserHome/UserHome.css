@@ -1,0 +1,40 @@
+.userhome_main{
+    color: aliceblue;
+    text-align: center;
+    padding: 1em;
+}
+
+.userhome_form{
+    display: flex;
+    flex-direction: column;
+}
+
+.userhome_buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.userhome_button_margin{
+    margin: 1em 1em;
+}
+
+.userhome_recentlist{
+    display: flexbox;
+}
+
+@media (min-width: 800px){
+    .userhome_main{
+        display: flex;
+        flex-direction: column;
+    }
+    .userhome_buttons{
+        margin: 1em;
+    }
+    .userhome_recentlist{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0em 20%;
+    }
+}
+
